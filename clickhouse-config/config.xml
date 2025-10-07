@@ -1,0 +1,30 @@
+<clickhouse>
+    <!-- Custom configuration for ClickHouse -->
+    
+    <!-- Allow connections from any host -->
+    <listen_host>0.0.0.0</listen_host>
+    
+    <!-- HTTP interface settings -->
+    <http_port>8123</http_port>
+    
+    <!-- Native TCP interface settings -->
+    <tcp_port>9000</tcp_port>
+    
+    <!-- Maximum memory usage -->
+    <max_server_memory_usage_to_ram_ratio>0.8</max_server_memory_usage_to_ram_ratio>
+    
+    <!-- Background processing pool sizes -->
+    <background_pool_size>16</background_pool_size>
+    <background_schedule_pool_size>16</background_schedule_pool_size>
+    
+    <!-- Concurrent queries limit -->
+    <max_concurrent_queries>100</max_concurrent_queries>
+    
+    <!-- Enable query logging -->
+    <query_log>
+        <database>system</database>
+        <table>query_log</table>
+        <partition_by>toYYYYMM(event_date)</partition_by>
+        <flush_interval_milliseconds>7500</flush_interval_milliseconds>
+    </query_log>
+</clickhouse>

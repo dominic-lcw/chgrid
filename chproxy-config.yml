@@ -1,0 +1,39 @@
+server:
+  http:
+    listen_addr: ":9090"
+    allowed_networks: ["0.0.0.0/0"]
+
+users:
+  - name: "default"
+    to_cluster: "default"
+    to_user: "default"
+    max_concurrent_queries: 10
+    max_execution_time: 60s
+    requests_per_minute: 1000
+    deny_http: false
+    deny_https: false
+    allow_cors: true
+
+clusters:
+  - name: "default"
+    scheme: "http"
+    nodes: ["clickhouse:8123"]
+    users:
+      - name: "default"
+        password: ""
+
+# Logging configuration
+log_debug: false
+hack_me_please: false
+
+# Cache configuration (optional)
+cache:
+  - name: "shortterm"
+    dir: "/tmp/chproxy-cache"
+    max_size: "1Gb"
+    expire: "1h"
+
+# Health check endpoint
+health_check:
+  path: "/ping"
+  response: "Ok.\n"
