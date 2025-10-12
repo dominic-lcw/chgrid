@@ -10,21 +10,25 @@ This Docker Compose setup runs ClickHouse database server with CHProxy as a conn
 ## Quick Start
 
 1. Start the services:
+
    ```bash
    docker-compose -f clickhouse.docker-compose.yaml up -d
    ```
 
 2. Check service health:
+
    ```bash
    docker-compose -f clickhouse.docker-compose.yaml ps
    ```
 
 3. Test ClickHouse directly:
+
    ```bash
    curl "http://localhost:8123/ping"
    ```
 
 4. Test CHProxy:
+
    ```bash
    curl "http://localhost:9090/ping"
    ```
@@ -61,6 +65,7 @@ docker-compose -f clickhouse.docker-compose.yaml down
 ```
 
 To remove volumes as well:
+
 ```bash
 docker-compose -f clickhouse.docker-compose.yaml down -v
 ```
